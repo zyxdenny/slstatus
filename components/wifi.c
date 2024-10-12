@@ -61,6 +61,15 @@
 		sscanf(datastart + 1, " %*d   %d  %*d  %*d\t\t  %*d\t   "
 		       "%*d\t\t%*d\t\t %*d\t  %*d\t\t %*d", &cur);
 
+        int signal_strength = (int)((float)cur / 70 * 100);
+        if (!wifi_essid(interface))      return bprintf("󰤮");
+        if (signal_strength >= 80)      return bprintf("󰤨");
+        else if (signal_strength >= 60) return bprintf("󰤥");
+        else if (signal_strength >= 40) return bprintf("󰤢");
+        else if (signal_strength >= 20) return bprintf("󰤟");
+        else                            return bprintf("󰤯");
+
+
 		/* 70 is the max of /proc/net/wireless */
 		return bprintf("%d", (int)((float)cur / 70 * 100));
 	}

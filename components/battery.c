@@ -46,7 +46,21 @@
 		if (pscanf(path, "%d", &cap_perc) != 1)
 			return NULL;
 
-		return bprintf("%d", cap_perc);
+        if (!strcmp(battery_state(bat), "+"))
+            return bprintf("󰂄 %d", cap_perc);
+
+        if      (cap_perc >= 95) return bprintf("󰁹 %d", cap_perc);
+        else if (cap_perc >= 90) return bprintf("󰂂 %d", cap_perc);
+        else if (cap_perc >= 80) return bprintf("󰂁 %d", cap_perc);
+        else if (cap_perc >= 70) return bprintf("󰂀 %d", cap_perc);
+        else if (cap_perc >= 60) return bprintf("󰁿 %d", cap_perc);
+        else if (cap_perc >= 50) return bprintf("󰁾 %d", cap_perc);
+        else if (cap_perc >= 40) return bprintf("󰁽 %d", cap_perc);
+        else if (cap_perc >= 30) return bprintf("󰁼 %d", cap_perc);
+        else if (cap_perc >= 20) return bprintf("󰁻 %d", cap_perc);
+        else if (cap_perc >= 10) return bprintf("󰁺 %d", cap_perc);
+        else if (cap_perc <= 5 ) return bprintf("󰂎 %d", cap_perc);
+
 	}
 
 	const char *

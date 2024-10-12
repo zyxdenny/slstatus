@@ -59,7 +59,7 @@
         else if (cap_perc >= 30) return bprintf("󰁼 %d", cap_perc);
         else if (cap_perc >= 20) return bprintf("󰁻 %d", cap_perc);
         else if (cap_perc >= 10) return bprintf("󰁺 %d", cap_perc);
-        else if (cap_perc <= 5 ) return bprintf("󰂎 %d", cap_perc);
+        else                     return bprintf("󰂎 %d", cap_perc);
 
 	}
 
